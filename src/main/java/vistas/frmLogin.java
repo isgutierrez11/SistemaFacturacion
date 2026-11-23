@@ -50,14 +50,19 @@ public class frmLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jlInicioSesion.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jlInicioSesion.setText("Inicio de Sesión");
 
+        jlCedula.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         jlCedula.setText("Cedula:");
 
+        jlContrasena.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         jlContrasena.setText("Contraseña:");
 
+        jlTitulo.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jlTitulo.setText("Sistema de Facturación");
 
+        btnIngresar.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
         btnIngresar.setText("Iniciar Sesión");
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +70,7 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +139,7 @@ public class frmLogin extends javax.swing.JFrame {
                     .addGroup(jpPrincipalLayout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(jpInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +148,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(jlInicioSesion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
