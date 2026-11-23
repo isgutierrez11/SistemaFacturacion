@@ -15,16 +15,17 @@ import modelo.Usuario;
  * @author Yumor
  */
 public class frmLogin extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmLogin.class.getName());
 
-     private final UsuarioDAO usuarioDAO = new UsuarioDAO();
+    private final UsuarioDAO usuarioDAO = new UsuarioDAO();
+
     /**
      * Creates new form frmLoginn
      */
     public frmLogin() {
         initComponents();
-         setLocationRelativeTo(null);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -161,7 +162,7 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-    String cedula = txtCedula.getText().trim();
+        String cedula = txtCedula.getText().trim();
         String pass = new String(txtContrasena.getPassword()).trim();
 
         if (cedula.isEmpty() || pass.isEmpty()) {
@@ -184,7 +185,9 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-  
+        txtCedula.setText("");
+        txtContrasena.setText("");
+        txtCedula.requestFocus();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
