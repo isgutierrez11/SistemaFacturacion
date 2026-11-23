@@ -4,6 +4,32 @@
  */
 package vistas;
 
+<<<<<<< HEAD
+import dao.ErrorBD;
+import dao.UsuarioDAO;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
+
+/**
+ * Formulario de Inicio de Sesión.
+ * Qué hace: Controla el acceso inicial al sistema mediante credenciales.
+ * Cómo lo hace: Solicita cédula y contraseña, consulta la base de datos mediante UsuarioDAO
+ * y, si las credenciales son válidas, da paso al menú principal.
+ */
+public class frmLogin extends javax.swing.JFrame {
+
+    // Objeto DAO para consultar y validar usuarios en la base de datos
+    private final UsuarioDAO usuarioDAO = new UsuarioDAO();
+
+    /**
+     * Constructor del formulario.
+     * Qué hace: Inicializa los componentes visuales y centra la ventana en pantalla.
+     */
+    public frmLogin() {
+        initComponents();
+        setLocationRelativeTo(null); // Centra la ventana en el monitor
+=======
 /**
  *
  * @author Yumor
@@ -17,6 +43,7 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
+>>>>>>> b7340e2 (Se agrega el paquete vistas con el frmLogin)
     }
 
     /**
@@ -38,6 +65,8 @@ public class frmLogin extends javax.swing.JFrame {
         jTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Acceso al Sistema");
+        setResizable(false);
 
         jpPrincipal.setBackground(new java.awt.Color(240, 244, 248));
 
@@ -135,6 +164,56 @@ public class frmLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+<<<<<<< HEAD
+     * Acción del botón Ingresar.
+     * Qué hace: Valida los campos ingresados e intenta autenticar al usuario.
+     * Cómo lo hace: Comprueba que no estén vacíos, llama a usuarioDAO.validarLogin()
+     * y abre el menú principal si coincide con la base de datos.
+     */
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        String cedula = txtCedula.getText().trim();
+        String pass = new String(txtContrasena.getPassword()).trim();
+
+        // Validación básica de campos vacíos
+        if (cedula.isEmpty() || pass.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese cédula y contraseña.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            // Consulta en base de datos mediante procedimiento almacenado
+            Usuario u = usuarioDAO.validarLogin(cedula, pass);
+            if (u != null) {
+                // Credenciales correctas: muestra saludo y abre el menú principal
+                JOptionPane.showMessageDialog(this, "Bienvenido(a), " + u.getNombre() + "!", "Acceso concedido", JOptionPane.INFORMATION_MESSAGE);
+                new frmMenu().setVisible(true);
+                this.dispose(); // Cierra la ventana de login actual
+            } else {
+                // Credenciales incorrectas
+                JOptionPane.showMessageDialog(this, "Cédula o contraseña incorrectos.", "Acceso denegado", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            // Manejo de errores de conexión o SQL mediante ErrorBD
+            JOptionPane.showMessageDialog(this, ErrorBD.mensaje(ex), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    /**
+     * Acción del botón Limpiar.
+     * Qué hace: Vacía los campos del formulario.
+     * Cómo lo hace: Reemplaza el texto por cadenas vacías y posiciona el cursor en la cédula.
+     */
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtCedula.setText("");
+        txtContrasena.setText("");
+        txtCedula.requestFocus();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+=======
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -156,6 +235,7 @@ public class frmLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+>>>>>>> b7340e2 (Se agrega el paquete vistas con el frmLogin)
         java.awt.EventQueue.invokeLater(() -> new frmLogin().setVisible(true));
     }
 
