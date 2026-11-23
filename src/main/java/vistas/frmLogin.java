@@ -4,32 +4,12 @@
  */
 package vistas;
 
-<<<<<<< HEAD
 import dao.ErrorBD;
 import dao.UsuarioDAO;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 
-/**
- * Formulario de Inicio de Sesión.
- * Qué hace: Controla el acceso inicial al sistema mediante credenciales.
- * Cómo lo hace: Solicita cédula y contraseña, consulta la base de datos mediante UsuarioDAO
- * y, si las credenciales son válidas, da paso al menú principal.
- */
-public class frmLogin extends javax.swing.JFrame {
-
-    // Objeto DAO para consultar y validar usuarios en la base de datos
-    private final UsuarioDAO usuarioDAO = new UsuarioDAO();
-
-    /**
-     * Constructor del formulario.
-     * Qué hace: Inicializa los componentes visuales y centra la ventana en pantalla.
-     */
-    public frmLogin() {
-        initComponents();
-        setLocationRelativeTo(null); // Centra la ventana en el monitor
-=======
 /**
  *
  * @author Yumor
@@ -38,12 +18,13 @@ public class frmLogin extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(frmLogin.class.getName());
 
+     private final UsuarioDAO usuarioDAO = new UsuarioDAO();
     /**
-     * Creates new form frmLogin
+     * Creates new form frmLoginn
      */
     public frmLogin() {
         initComponents();
->>>>>>> b7340e2 (Se agrega el paquete vistas con el frmLogin)
+         setLocationRelativeTo(null);
     }
 
     /**
@@ -56,75 +37,88 @@ public class frmLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jpPrincipal = new javax.swing.JPanel();
-        jpSecundario = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jCedula = new javax.swing.JLabel();
-        jNombre = new javax.swing.JLabel();
+        jlInicioSesion = new javax.swing.JLabel();
+        jpInicio = new javax.swing.JPanel();
+        jlCedula = new javax.swing.JLabel();
+        jlContrasena = new javax.swing.JLabel();
         txtCedula = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        jTitulo = new javax.swing.JLabel();
+        jlTitulo = new javax.swing.JLabel();
+        btnIngresar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        txtContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Acceso al Sistema");
-        setResizable(false);
 
-        jpPrincipal.setBackground(new java.awt.Color(240, 244, 248));
+        jlInicioSesion.setText("Inicio de Sesión");
 
-        jLabel2.setBackground(new java.awt.Color(37, 78, 122));
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(37, 78, 122));
-        jLabel2.setText("Sistema de Facturación ");
+        jlCedula.setText("Cedula:");
 
-        jCedula.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jCedula.setText("Cedula:");
+        jlContrasena.setText("Contraseña:");
 
-        jNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jNombre.setText("Nombre:");
+        jlTitulo.setText("Sistema de Facturación");
 
-        javax.swing.GroupLayout jpSecundarioLayout = new javax.swing.GroupLayout(jpSecundario);
-        jpSecundario.setLayout(jpSecundarioLayout);
-        jpSecundarioLayout.setHorizontalGroup(
-            jpSecundarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpSecundarioLayout.createSequentialGroup()
-                .addGroup(jpSecundarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpSecundarioLayout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpSecundarioLayout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+        btnIngresar.setText("Iniciar Sesión");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpInicioLayout = new javax.swing.GroupLayout(jpInicio);
+        jpInicio.setLayout(jpInicioLayout);
+        jpInicioLayout.setHorizontalGroup(
+            jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpInicioLayout.createSequentialGroup()
+                .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpInicioLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jlCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpSecundarioLayout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpInicioLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnIngresar)
+                            .addComponent(jlContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpInicioLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpInicioLayout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(98, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpInicioLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
         );
-        jpSecundarioLayout.setVerticalGroup(
-            jpSecundarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpSecundarioLayout.createSequentialGroup()
-                .addGroup(jpSecundarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpSecundarioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(jCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpSecundarioLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        jpInicioLayout.setVerticalGroup(
+            jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpInicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jpSecundarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
+                .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jpInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIngresar)
+                    .addComponent(btnLimpiar))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
-
-        jTitulo.setBackground(new java.awt.Color(0, 0, 255));
-        jTitulo.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jTitulo.setForeground(new java.awt.Color(37, 78, 122));
-        jTitulo.setText("Inicio de Sesión ");
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
         jpPrincipal.setLayout(jpPrincipalLayout);
@@ -134,26 +128,29 @@ public class frmLogin extends javax.swing.JFrame {
                 .addGroup(jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpPrincipalLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpPrincipalLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jpSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(106, Short.MAX_VALUE))
+                        .addGap(101, 101, 101)
+                        .addComponent(jpInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPrincipalLayout.createSequentialGroup()
-                .addComponent(jTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jpSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94))
+            .addGroup(jpPrincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlInicioSesion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jpPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,57 +160,34 @@ public class frmLogin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-<<<<<<< HEAD
-     * Acción del botón Ingresar.
-     * Qué hace: Valida los campos ingresados e intenta autenticar al usuario.
-     * Cómo lo hace: Comprueba que no estén vacíos, llama a usuarioDAO.validarLogin()
-     * y abre el menú principal si coincide con la base de datos.
-     */
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        String cedula = txtCedula.getText().trim();
+    String cedula = txtCedula.getText().trim();
         String pass = new String(txtContrasena.getPassword()).trim();
 
-        // Validación básica de campos vacíos
         if (cedula.isEmpty() || pass.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Ingrese cédula y contraseña.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         try {
-            // Consulta en base de datos mediante procedimiento almacenado
             Usuario u = usuarioDAO.validarLogin(cedula, pass);
             if (u != null) {
-                // Credenciales correctas: muestra saludo y abre el menú principal
                 JOptionPane.showMessageDialog(this, "Bienvenido(a), " + u.getNombre() + "!", "Acceso concedido", JOptionPane.INFORMATION_MESSAGE);
                 new frmMenu().setVisible(true);
-                this.dispose(); // Cierra la ventana de login actual
+                this.dispose();
             } else {
-                // Credenciales incorrectas
                 JOptionPane.showMessageDialog(this, "Cédula o contraseña incorrectos.", "Acceso denegado", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException ex) {
-            // Manejo de errores de conexión o SQL mediante ErrorBD
             JOptionPane.showMessageDialog(this, ErrorBD.mensaje(ex), "Error de Base de Datos", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
-    /**
-     * Acción del botón Limpiar.
-     * Qué hace: Vacía los campos del formulario.
-     * Cómo lo hace: Reemplaza el texto por cadenas vacías y posiciona el cursor en la cédula.
-     */
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        txtCedula.setText("");
-        txtContrasena.setText("");
-        txtCedula.requestFocus();
+  
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-=======
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -235,18 +209,19 @@ public class frmLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
->>>>>>> b7340e2 (Se agrega el paquete vistas con el frmLogin)
         java.awt.EventQueue.invokeLater(() -> new frmLogin().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jCedula;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jNombre;
-    private javax.swing.JLabel jTitulo;
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JLabel jlCedula;
+    private javax.swing.JLabel jlContrasena;
+    private javax.swing.JLabel jlInicioSesion;
+    private javax.swing.JLabel jlTitulo;
+    private javax.swing.JPanel jpInicio;
     private javax.swing.JPanel jpPrincipal;
-    private javax.swing.JPanel jpSecundario;
     private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JPasswordField txtContrasena;
     // End of variables declaration//GEN-END:variables
 }
